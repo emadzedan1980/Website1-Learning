@@ -1,0 +1,177 @@
+https://github.com/public-apis/public-apis
+https://dog.ceo/dog-api/
+https://dog.ceo/api/breeds/list/all
+https://dog.ceo/api/breed/hound/images
+
+
+//in a javascript object like:
+const cat = {
+  eyeColor: "black",
+  food: {
+    favorite: "Tuna",
+    leastFavorite: "oranges",
+  },
+  jump: function () {
+    console.log("Jumped");
+  },
+};
+
+console.log(cat.food.favorite);
+cat.jump();
+
+//We can reach this value using dot:
+console.log("Cat Eye Color Using Dot Notation: " + cat.eyeColor);
+
+//Also We can reach the values using array["item"]
+console.log("Cat Eye Color Using Bracket Notation: " + cat["eyeColor"]);
+//======================================================
+//but what is the defference and when to use each?
+//In JavaScript, you can access object properties using two main syntaxes: dot notation and bracket notation. Both achieve the same goal of retrieving or setting property values, but they have differences in usage and scenarios where one is preferred over the other.
+
+//======================================================
+/*Dot Notation (cat.eyeColor)
+Characteristics:
+Syntax: object.propertyName
+The property name must be a valid JavaScript identifier (no spaces, special characters except _ and $, cannot start with a number).
+Property names are fixed and known at coding time.
+Cleaner and more concise syntax.
+Easier to read and write in most cases.
+When to use:
+When the property name is a valid identifier.
+When you know the property name in advance (hardcoded).
+When you want clearer, more readable code.
+
+
+
+//======================================================
+Bracket Notation (cat["eyeColor"])
+Characteristics:
+Syntax: object["propertyName"]
+The property name is a string and can be any string, including those with spaces, special characters, or numbers.
+Allows dynamic property access using variables or expressions.
+Useful when property names are not valid identifiers or are computed at runtime.
+When to use:
+When the property name contains spaces, special characters, or starts with a number.
+When the property name is stored in a variable or computed dynamically.
+When you want to access properties with names that are reserved words in JavaScript.
+When iterating over properties or accessing properties dynamically.
+*/
+//======================================================
+
+//Example1:
+const cat2 = {
+  "eye-color": "blue",
+};
+console.log(cat2["eye-color"]); // Output: "blue"
+// Dot notation is invalid here:
+// console.log(cat.eye-color); // Interpreted as subtraction, not property access
+
+//Example2:
+const cat3 = {
+  "123name": "Whiskers",
+};
+console.log(cat3["123name"]); // Output: "Whiskers"
+// Dot notation is invalid:
+// console.log(cat.123name); // SyntaxError
+
+//Example3:
+const cat4 = {
+  "@home": true,
+  "#hashtag": "cute",
+};
+console.log(cat4["@home"]); // Output: true
+console.log(cat4["#hashtag"]); // Output: "cute"
+
+// Dot notation cannot be used:
+// console.log(cat4.@home);      // SyntaxError
+// console.log(cat4.#hashtag);   // SyntaxError
+
+/*
+Summary
+When property names include spaces, hyphens, numbers at the start, or special characters, always use bracket notation with the property name as a string.
+Dot notation only works with valid JavaScript identifiers (letters, digits not at start, _, $).
+*/
+
+//Example 1: Accessing property with a variable key
+const cat5 = {
+  eyeColor: "yellow",
+  age: 3,
+};
+const propName = "eyeColor";
+console.log(cat5[propName]); // Output: "yellow"
+
+//Example 2: Setting a property dynamically
+const cat6 = {};
+const newProp = "favoriteFood";
+cat6[newProp] = "fish";
+console.log(cat6.favoriteFood); // Output: "fish"
+
+//Example 3: Using expressions as property names
+const cat7 = {};
+const prefix = "eye";
+const suffix = "Color";
+cat7[prefix + suffix] = "green";
+console.log(cat7.eyeColor); // Output: "green"
+
+//Example 4: Looping over dynamic keys
+const cat8 = {
+  name: "Mittens",
+  age: 5,
+  color: "black",
+};
+const keys = ["name", "age", "color"];
+keys.forEach((key) => {
+  console.log(`${key}: ${cat8[key]}`);
+});
+// Output:
+// name: Mittens
+// age: 5
+// color: black
+
+/*
+Summary
+Use bracket notation when property names are stored in variables or computed dynamically.
+Dot notation cannot be used with variables or expressions as property names.
+Dynamic property access is essential for flexible and generic code, such as iterating over keys or handling user input.
+*/
+
+//ES6 Computed Property Names Syntax:
+//Example 1: Using a variable as a property name
+const propName2 = "color";
+const cat9 = {
+  [propName2]: "white",
+};
+console.log(cat9.color); // Output: "white"
+
+//Example 2: Using an expression as a property name
+const prefix2 = "eye";
+const suffix2 = "Color";
+const cat10 = {
+  [prefix + suffix]: "blue",
+};
+console.log(cat10.eyeColor); // Output: "blue"
+
+//Example 3: Using a function call or any expression
+function getKey() {
+  return "age";
+}
+const cat11 = {
+  [getKey()]: 4,
+};
+console.log(cat11.age); // Output: 4
+
+//Example 4: Using computed properties with other static properties
+const prop = "name";
+const cat12 = {
+  [prop]: "Whiskers",
+  age: 2,
+};
+console.log(cat12.name); // Output: "Whiskers"
+console.log(cat12.age); // Output: 2
+
+/*
+Why use computed properties?
+To create property names dynamically at object creation time.
+To avoid creating the object first and then adding properties dynamically.
+To write cleaner and more concise code when property names depend on variables or expressions.
+*/
