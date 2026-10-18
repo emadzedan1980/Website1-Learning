@@ -1,0 +1,42 @@
+Returning vs Mutating (Changing or Modifying):
+Example:
+	let pets = [
+		{name: "Meowsalot", species: "cat", age: 2},
+		{name: "Barksalot", species: "dog", age: 3},
+		{name: "Purrsload", species: "cat", age: 8}
+	];
+Mutating Example:
+	let numberOfItems = pet.push({name: "Puppster", species: "dog", age: 1});
+	console.log(pets);
+Returing Example:
+	console.log(numberOfItems);
+
+Functions the retuning values but do not mutating:
+Example1: create a new array that is based on older array
+	let newPetsNames = pets.map(getNameOnly); //will call this function by the number of items (Objects)
+	function getNameOnly(petObject){
+		return petObject.name;
+	}
+	console.log(newPetsNames);
+Example2: create a new array that only contains the "dog" from the older array
+	let newDogPets = pets.filter(getOnlyDogs); //
+	function getOnlyDogs(petObject){
+		return petObject.species == "dog"; //this will skip the cat species (should return false)
+	}
+	console.log(newDogPets);
+Example3: create a new array that only contains the "dog" name from the older array and there age is less than 3
+	function getNameOnly(petObject){
+		return petObject.name;
+	}
+	function getOnlyDogs(petObject){
+		return petObject.species == "dog"; //this will skip the cat species
+	}
+	function getOnlyBabies(petObject){
+		return petObject.age < 3
+	}
+	let newBabyDogsNames = pets.filter(getOnlyDogs).filter(getOnlyBabies).map(getNameOnly);
+	console.log(newBabyDogsNames);
+
+
+
+

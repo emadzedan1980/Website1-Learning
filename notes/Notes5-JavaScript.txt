@@ -1,0 +1,77 @@
+1. Anonymous Functions:
+Example:
+	document.addEventListener('click', function() {
+		alert('clicked');
+	});
+
+2. Arrow Functions:
+	Example1: parameters and more than one line:
+		document.addEventListener('click', (event) => {
+			let message = 'clicked';
+			alert(message);
+		});
+	Example2: if Single line Statement:
+		document.addEventListener('click', () => alert('clicked'));
+	Example3: if return a value:
+		//Noraml
+			let myNumbers = [10, 50, 2000];
+			let doubledNumbers = myNumbers.map(function(x){
+				return x * 2
+			});
+		//with return 1 single line: we remove "return"
+			let myNumbers = [10, 50, 2000];
+			let doubledNumbers = myNumbers.map(x => x * 2);
+			console.log(doubledNumbers);
+		//with return 1 single line and 2 parameter: we remove "return" and keep the()
+			let myNumbers = [10, 50, 2000];
+			let multiplier = myNumbers.map((x, y) => x * y);
+			console.log(multiplier);
+
+3. "this" keyword Context In Arrow Functions:
+	Example: they do not have there own "this" keyword:
+		let emad = {
+			firstName: "Emad",
+			lastName: "Zedan",
+			driveCar() {
+				let imAFunctionNotAMethod = () => console.log(this.firstName + " " + this.lastName); // "this" pointing to "emad" object.
+				imAFunctionNotAMethod();
+				console.log(this.firstName + " " + this.lastName + " is driving a car!"); // We should use "this" keyword to access same object properties.
+				}
+			}
+		emad.driveCar();
+
+4. Function Hoisting (declaration moved to the top):
+	Example1:
+		cool(); // You can call a normal functions before you define them
+		function cool() {
+			console.log("I'm cool");	
+		}
+	Example2:
+		let cool = function(){
+			console.log('Hey!');	
+		}
+		cool(); //You can not call an expersion functions before you define them
+
+5. Template Literals:
+	Example1: Normal strings
+		let myName = "Emad";
+		console.log('Hello, my name is ' + myName + ' and the skyis blue.');
+	Example2: Backticks strings:
+		let myName = "Emad";
+		console.log(`Hello, my name is ${myName} and the skyis blue.`);
+
+
+6. Semicolons:
+	Example1: minify
+		let myName = "Emad";console.log(`Hello, my name is ${myName} and the skyis blue.`);
+	Example2: No semicolons on line breaks
+		let myName = "Emad"
+		console.log(`Hello, my name is ${myName} and the skyis blue.`)
+	Example3: Best of both worlds (line breaks + semicolons)
+		let myName = "Emad";
+		console.log(`Hello, my name is ${myName} and the skyis blue.`);
+
+
+
+
+

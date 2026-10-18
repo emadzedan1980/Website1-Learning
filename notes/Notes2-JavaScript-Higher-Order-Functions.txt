@@ -1,0 +1,86 @@
+Higher Order Functions:
+
+a. function that accepts a function as an argument.
+
+	Example: Higher Order Function:
+
+		document.addEventListener('click', myFunction);
+
+		function myFunction(){
+
+			alert('clicked');
+
+		}
+
+b. function the returns a function.
+
+	Example: Non Higher Order Functions:
+
+		function doubleMe(myNumber){
+
+			return myNumber \* 2;
+
+		}
+
+		function tripleMe(myNumber){
+
+			return myNumber \* 3;
+
+		}
+
+		function quadrupleMe(myNumber){
+
+			return myNumber \* 4;
+
+		}
+
+		document.write(doubleMe(5));
+
+		document.write(tripleMe(5));
+
+		document.write(quadrupleMe(5));
+
+	Example: Higher Order Function:
+
+		function createMultiplier(mulitiplier){
+
+			return function(myNumber){
+
+				return myNumber \* mulitiplier
+
+			}
+
+		}
+
+		let  doubleMe = createMultiplier(2);
+
+		let  tripleMe = createMultiplier(3);
+
+		let  quadrupleMe = createMultiplier(4);
+
+		alert(doubleMe(5));
+
+		alert(tripleMe(5));
+
+		alert(quadrupleMe(5));
+
+c. Useful higher order functions that are part of the JavaScript Language:
+
+	Example1: Higher Order Function:
+
+		let myColors = \['red', 'orange', 'yellow'];
+
+		myColors.forEach(saySomethingNice)
+
+		function saySomethingNice() {
+
+			document.write('the color ' + color + ' is a great color.<br>');
+
+		}
+
+	Example2 & 3 :Higher Order Function:
+
+		myColors.map()
+
+		myColors.filter()
+

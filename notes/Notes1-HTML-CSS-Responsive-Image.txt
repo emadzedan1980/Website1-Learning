@@ -1,0 +1,2 @@
+Responsive Images:
+- Send different image files to different devices based on their size and pixel density.

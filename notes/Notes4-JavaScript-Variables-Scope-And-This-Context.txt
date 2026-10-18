@@ -1,0 +1,37 @@
+Scope Of Variables:
+	- let & const: strict block scope without hoisting
+	- var: non-strict function scope and has hoisting
+	Example:
+		var myName = "Emad1";
+		function myFunction(){
+			if(true){
+				var myName = "Emad2" // Accessible any place into the function
+			}
+		}
+	Note: Do not use the var variables.
+	
+"this" Keyword Context Of Objects:
+Example1:	
+	let emad = {
+		firstName: "Emad",
+		lastName: "Zedan",
+		driveCar() {
+			function imAFunctionNotAMethod(){
+				console.log(this); // "this" pointing to "window" global object.
+			}
+			imAFunctionNotAMethod();
+			console.log(this.firstName + " " + this.lastName + " is driving a car!"); // We should use "this" keyword to access same object properites.
+		}
+	}
+	emad.driveCar();
+Example2:
+	function breathe(){
+		console.log(this.firstName + " " + this.lastName + " just inhaled and exhaled!");
+	}
+	breathe(); //"this" pointing to "window" global object. (Error & Useless)
+	breath.call(emad); //passing the object - "this" keyword accesses same "emad" object properites
+
+
+
+
+
