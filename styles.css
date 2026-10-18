@@ -213,10 +213,29 @@ h2 {
 }
 
 .service-card {
-  min-height: 215px;
-  padding: 27px;
+  overflow: hidden;
   border: 1px solid #e5e6de;
   background: #fbfaf6;
+}
+
+.service-card-image {
+  display: block;
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+}
+
+.service-card > :not(.service-card-image) {
+  margin-right: 27px;
+  margin-left: 27px;
+}
+
+.service-card .card-number {
+  margin-top: 24px;
+}
+
+.service-card p {
+  margin-bottom: 27px;
 }
 
 .card-number {
@@ -286,6 +305,47 @@ h2 {
   font-size: 0.77rem;
 }
 
+.social-links {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.social-links a {
+  display: inline-flex;
+  width: 20px;
+  height: 20px;
+  color: var(--muted);
+  transition: color 160ms ease, transform 160ms ease;
+}
+
+.social-links a:hover {
+  transform: translateY(-2px);
+  color: var(--green);
+}
+
+.social-links svg {
+  width: 100%;
+  height: 100%;
+}
+
+.social-links svg path,
+.social-links svg rect,
+.social-links svg circle {
+  fill: currentColor;
+}
+
+.social-links a:first-child svg rect,
+.social-links a:first-child svg circle:not(.social-icon-dot) {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+}
+
+.social-links a:first-child svg .social-icon-dot {
+  stroke: none;
+}
+
 .page-hero {
   padding-top: 96px;
   padding-bottom: 105px;
@@ -297,11 +357,18 @@ h2 {
 
 .about-story {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
+  grid-template-columns: 0.85fr 1fr 1fr;
+  gap: 40px;
   align-items: start;
   padding-top: 105px;
   padding-bottom: 100px;
+}
+
+.about-photo {
+  display: block;
+  width: 100%;
+  height: 340px;
+  object-fit: cover;
 }
 
 .about-story h2,
@@ -470,6 +537,15 @@ h2 {
     flex-wrap: wrap;
     gap: 10px 20px;
     padding: 20px 0;
+  }
+
+  .site-footer p {
+    order: 1;
+    width: 100%;
+  }
+
+  .about-photo {
+    height: 280px;
   }
 }
 
