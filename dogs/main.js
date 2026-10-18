@@ -2,9 +2,13 @@ let timer;
 let deleteFirstPhotoDeley;
 
 async function startFetching() {
-  const response = await fetch("https://dog.ceo/api/breeds/list/all");
-  const data = await response.json();
-  createBreedList(data.message);
+  try {
+    const response = await fetch("https://dog.ceo/api/breeds/list/all");
+    const data = await response.json();
+    createBreedList(data.message);
+  } catch (e) {
+    console.log("These Was A Problem Fetching The Breed List!");
+  }
 }
 startFetching();
 function createBreedList(receivedJSON) {
