@@ -1,0 +1,100 @@
+body {
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
+  font-family: sans-serif;
+  color: #333333;
+}
+h1,
+.form,
+.main-ui p {
+  text-align: center;
+}
+.question {
+  text-align: center;
+  font-size: 54px;
+}
+.form input {
+  border-radius: 5px;
+  border: 1px solid gray;
+  width: 200px;
+  height: 30px;
+}
+.form button,
+.reset-button {
+  border-radius: 5px;
+  border: 1px solid black;
+  width: fit-content;
+  height: 34px;
+  background-color: gray;
+  color: white;
+}
+.form button:hover,
+.reset-button:hover {
+  background-color: chocolate;
+}
+.boxes {
+  display: flex;
+  width: 100%;
+}
+.progress {
+  border: 1px solid #c7c7c7;
+  border-right: none;
+  position: relative;
+}
+.progress-inner {
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  width: 100%;
+  background-color: #7ecc00;
+  opacity: 0.57;
+  transform: scaleX(0);
+  transform-origin: center left;
+  transition: transform 0.4s ease-in-out;
+}
+.box {
+  height: 80px;
+  border-right: 1px solid #c7c7c7;
+  flex: 1;
+}
+.overlay {
+  position: fixed;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  background-color: rgba(255, 255, 255, 0.82);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.33s ease-in-out;
+  transform: scale(1.2);
+}
+.end-message {
+  text-align: center;
+  margin-left: -15px;
+}
+body.overlay-is-open .overlay {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+}
+body.overlay-is-open .main-ui {
+  filter: blur(4px);
+}
+@keyframes showError {
+  50% {
+    color: red;
+    transform: scale(1.1);
+  }
+  100% {
+    color: #333333;
+    transform: scale(1);
+  }
+}
+.animate-worng {
+  animation: 0.45s showError;
+}
